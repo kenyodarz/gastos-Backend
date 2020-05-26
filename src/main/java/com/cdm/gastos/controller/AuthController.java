@@ -59,6 +59,7 @@ public class AuthController {
                 jwt,
                 userDetails.getId(),
                 userDetails.getUsername(),
+                userDetails.getName(),
                 userDetails.getEmail(),
                 roles
         ));
@@ -79,6 +80,7 @@ public class AuthController {
         // Creamos un nuevo usuario
         User user = new User(
                 signupRequest.getUsername(),
+                signupRequest.getName(),
                 signupRequest.getEmail(),
                 encoder.encode(signupRequest.getPassword()));
         Set<String> srtRoles = signupRequest.getRole();
