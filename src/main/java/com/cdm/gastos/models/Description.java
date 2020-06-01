@@ -7,21 +7,23 @@ import javax.persistence.*;
 public class Description {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idDescripcion;
     @Column
     private String nombre;
     @Column
     private String descripcion;
+    @Column
+    private String tipoDescripcion;
 
     public Description() {
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdDescripcion() {
+        return idDescripcion;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdDescripcion(Long idDescripcion) {
+        this.idDescripcion = idDescripcion;
     }
 
     public String getNombre() {
@@ -38,5 +40,13 @@ public class Description {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getTipoDescripcion() {
+        return tipoDescripcion;
+    }
+
+    public void setTipoDescripcion(String tipoDescripcion) {
+        this.tipoDescripcion = tipoDescripcion;
     }
 }
