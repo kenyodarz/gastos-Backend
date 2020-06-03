@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "registro_entrada")
-public class RegistroEntrada {
+@Table(name = "saldo")
+public class Saldo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idRegistro;
+    private Long idSaldo;
     @Column
     private String observaciones;
     @OneToOne
@@ -25,18 +25,17 @@ public class RegistroEntrada {
     @Column
     private Boolean cerrado;
     @OneToOne
-    @JoinColumn(name = "idProyecto")
-    private Proyecto proyecto;
+    @JoinColumn(name = "idRegistro")
+    private RegistroEntrada registroEntrada;
 
-    public RegistroEntrada() {
+    public Saldo() {}
+
+    public Long getIdSaldo() {
+        return idSaldo;
     }
 
-    public Long getIdRegistro() {
-        return idRegistro;
-    }
-
-    public void setIdRegistro(Long idRegistro) {
-        this.idRegistro = idRegistro;
+    public void setIdSaldo(Long idSaldo) {
+        this.idSaldo = idSaldo;
     }
 
     public String getObservaciones() {
@@ -95,11 +94,11 @@ public class RegistroEntrada {
         this.cerrado = cerrado;
     }
 
-    public Proyecto getProyecto() {
-        return proyecto;
+    public RegistroEntrada getRegistroEntrada() {
+        return registroEntrada;
     }
 
-    public void setProyecto(Proyecto proyecto) {
-        this.proyecto = proyecto;
+    public void setRegistroEntrada(RegistroEntrada registroEntrada) {
+        this.registroEntrada = registroEntrada;
     }
 }

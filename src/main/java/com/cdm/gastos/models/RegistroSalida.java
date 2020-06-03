@@ -25,6 +25,9 @@ public class RegistroSalida {
     @OneToOne
     @JoinColumn(name = "idRegistro")
     private RegistroEntrada registroEntrada;
+    @OneToOne
+    @JoinColumn(name = "idProyecto")
+    private Proyecto proyecto;
 
 
     public RegistroSalida() {}
@@ -93,4 +96,11 @@ public class RegistroSalida {
         this.registroEntrada = registroEntrada;
     }
 
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
+    }
 }
