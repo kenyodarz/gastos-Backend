@@ -20,14 +20,13 @@ public class RegistroSalida {
     private LocalDate fecha;
     @Column
     private  Double cantidad;
-    @Column
-    private String users;
     @OneToOne
-    @JoinColumn(name = "idRegistro")
-    private RegistroEntrada registroEntrada;
+    @JoinColumn(name = "id")
+    public User users;
     @OneToOne
-    @JoinColumn(name = "idProyecto")
-    private Proyecto proyecto;
+    @JoinColumn(name = "idInforme")
+    private Informe informe;
+
 
 
     public RegistroSalida() {}
@@ -80,27 +79,19 @@ public class RegistroSalida {
         this.cantidad = cantidad;
     }
 
-    public String getUsers() {
+    public User getUsers() {
         return users;
     }
 
-    public void setUsers(String users) {
+    public void setUsers(User users) {
         this.users = users;
     }
 
-    public RegistroEntrada getRegistroEntrada() {
-        return registroEntrada;
+   public Informe getInforme() {
+        return informe;
     }
 
-    public void setRegistroEntrada(RegistroEntrada registroEntrada) {
-        this.registroEntrada = registroEntrada;
-    }
-
-    public Proyecto getProyecto() {
-        return proyecto;
-    }
-
-    public void setProyecto(Proyecto proyecto) {
-        this.proyecto = proyecto;
+    public void setInforme(Informe informe) {
+        this.informe = informe;
     }
 }

@@ -4,12 +4,16 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "registro_entrada")
+@Table(name = "registro_entrada",uniqueConstraints = {
+        @UniqueConstraint(columnNames = "observaciones"),
+}
+)
 public class RegistroEntrada {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRegistro;
     @Column
+
     private String observaciones;
     @OneToOne
     @JoinColumn(name ="idDescripcion")
@@ -20,13 +24,14 @@ public class RegistroEntrada {
     private LocalDate fecha;
     @Column
     private  Double cantidad;
-    @Column
-    public String users;
+    @OneToOne
+    @JoinColumn(name = "id")
+    public User users;
     @Column
     private Boolean cerrado;
     @OneToOne
-    @JoinColumn(name = "idProyecto")
-    private Proyecto proyecto;
+    @JoinColumn(name = "idInforme")
+    private Informe informe;
 
     public RegistroEntrada() {
     }
@@ -79,11 +84,11 @@ public class RegistroEntrada {
         this.cantidad = cantidad;
     }
 
-    public String getUsers() {
+    public User getUsers() {
         return users;
     }
 
-    public void setUsers(String users) {
+    public void setUsers(User users) {
         this.users = users;
     }
 
@@ -95,11 +100,11 @@ public class RegistroEntrada {
         this.cerrado = cerrado;
     }
 
-    public Proyecto getProyecto() {
-        return proyecto;
+    public Informe getInforme() {
+        return informe;
     }
 
-    public void setProyecto(Proyecto proyecto) {
-        this.proyecto = proyecto;
+    public void setInforme(Informe informe) {
+        this.informe = informe;
     }
 }
