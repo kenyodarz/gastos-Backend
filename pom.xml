@@ -9,13 +9,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cdm</groupId>
-	<artifactId>gastos</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>gastos</name>
+	<artifactId>gastos-backend</artifactId>
+	<version>1.0.0</version>
+	<packaging>war</packaging>
+	<name>gastos-backend</name>
 	<description>Aplicativo Web para el Control de Gastos en Sitio</description>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
@@ -30,6 +31,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -67,6 +73,7 @@
     </dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
