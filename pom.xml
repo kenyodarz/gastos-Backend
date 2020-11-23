@@ -77,6 +77,17 @@
 			<artifactId>spring-beans</artifactId>
 			<version>5.2.7.RELEASE</version>
 		</dependency>
+		<!-- JDBC -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<!-- Jasper -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.15.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
