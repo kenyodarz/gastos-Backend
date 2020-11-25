@@ -25,7 +25,7 @@ public class UserRestController {
     }
 
     @GetMapping("/find/{id}")
-    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public User find(@PathVariable Long id) {
         return userServiceAPI.get(id);
     }
