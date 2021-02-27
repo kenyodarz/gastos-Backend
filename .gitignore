@@ -1,3 +1,10 @@
+.idea/
+.idea/workspace.xml
+.idea/misc.xml
+.idea/vcs.xml
+ERORR.txt
+out/
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
