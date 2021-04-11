@@ -114,11 +114,20 @@ ORDER BY registro_salida.fecha ASC]]>
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[Select *
-From informe 
-INNER JOIN proyecto  ON ( informe.id_proyecto =  proyecto.id_proyecto  )
-INNER JOIN users  ON ( informe.id =  users.id )
-where id_informe = $P{IDINFORME}]]>
+		<![CDATA[SELECT
+i.id_informe, i.anulado,
+( SELECT SUM(s.cantidad) FROM registro_salida s  WHERE s.id_informe = $P{IDINFORME} ) AS credito,
+( SELECT SUM(e.cantidad) FROM registro_entrada e WHERE e.id_informe = $P{IDINFORME} ) as debito,
+i.fecha,
+SUM(DISTINCT ( SELECT SUM(e.cantidad) FROM registro_entrada e WHERE e.id_informe = $P{IDINFORME} ) - ( SELECT SUM(s.cantidad) FROM registro_salida s  WHERE s.id_informe = $P{IDINFORME} )) AS total,
+i.id_proyecto, i.id,
+p.id_proyecto, p.nombre,
+u.id, u.email, u.name, u.password, u.username
+FROM informe i, registro_salida s, registro_entrada e, proyecto p, users u
+WHERE e.id_informe = i.id_informe
+AND s.id_informe = i.id_informe
+AND i.id_informe = $P{IDINFORME}
+GROUP BY i.id_informe, p.id_proyecto, u.id ; ]]>
 	</queryString>
 	<field name="id_informe" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.label" value="id_informe"/>
